@@ -23,7 +23,8 @@
         /* Hero Section Styles */
         #hero {
             height: 100vh;
-            background: url('https://example.com/bee-swarm-bg.jpg') no-repeat center center;
+            background: url('revolution-logo.png') no-repeat center center;
+            background-image: url('hero-bg.jpg'); /* Background for the hero section */
             background-size: cover;
             color: white;
             text-align: center;
@@ -126,6 +127,11 @@
             font-size: 1rem;
         }
 
+        .feature-card img {
+            width: 60px; /* Image size for icons */
+            margin-right: 10px;
+        }
+
         /* Footer Styles */
         footer {
             background-color: #333;
@@ -172,6 +178,7 @@
     <header id="hero">
         <div class="overlay"></div>
         <div class="hero-content">
+            <img src="revolution-logo.png" alt="Revolution Logo" style="width: 150px; margin-bottom: 20px;">
             <h1>Welcome to Revolution!</h1>
             <p>Your ultimate macro solution for Bee Swarm Simulator</p>
             <a href="https://discord.gg/bm2bcwZWkj" class="cta-btn">Join Our Discord</a>
@@ -189,20 +196,24 @@
         <h2>Features</h2>
         <div class="feature-list">
             <div class="feature-card">
+                <img src="vic-hop-icon.png" alt="Vic Hop Icon">
                 <h3>Vic Hop</h3>
                 <p>Collaborative passive/searcher vic-hop that can scale to dozens of accounts working together.</p>
             </div>
             <div class="feature-card">
-                <h3>Multi-Instancing</h3>
-                <p>Run multiple accounts in a single desktop session (limited to passives only on Windows).</p>
+                <img src="pathing-icon.png" alt="Pathing Icon">
+                <h3>Intelligent Pathing</h3>
+                <p>A no-reset pathing system that goes directly from point to point, improving your macro’s efficiency.</p>
             </div>
             <div class="feature-card">
+                <img src="account-management-icon.png" alt="Account Management Icon">
                 <h3>Account Management</h3>
                 <p>Switch accounts on-the-fly and manage private servers with ease.</p>
             </div>
             <div class="feature-card">
-                <h3>Intelligent Pathing</h3>
-                <p>A no-reset pathing system that goes directly from point to point, improving your macro’s efficiency.</p>
+                <img src="multi-instancing-icon.png" alt="Multi-Instancing Icon">
+                <h3>Multi-Instancing</h3>
+                <p>Run multiple accounts in a single desktop session (limited to passives only on Windows).</p>
             </div>
         </div>
     </section>
