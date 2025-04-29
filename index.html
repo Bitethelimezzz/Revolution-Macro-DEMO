@@ -182,7 +182,7 @@
         #typewriter {
             display: inline;
             position: relative;
-            margin-right: 0.3em;
+            margin-right: 0.45em;
             animation: show .25s cubic-bezier(.2, 0, 0, 1);
         }
 
@@ -190,10 +190,13 @@
             content: '|';
             color: var(--color-primary);
             font-weight: var(--font-weight-medium);
+            font-size: 0.9em;
+            width: 0.05em;
             animation: blink 1s step-end infinite;
             position: absolute;
             right: 0;
-            margin-left: 0.2em;
+            margin-left: 0.5em;
+            transform: translateX(0.1em);
             top: 0;
             z-index: 1;
         }
@@ -451,11 +454,12 @@
             }
 
             #typewriter {
-                margin-right: 0.2em;
+                margin-right: 0.35em;
             }
 
             #typewriter::after {
-                margin-left: 0.15em;
+                margin-left: 0.3em;
+                transform: translateX(0.08em);
             }
         }
 
@@ -513,11 +517,12 @@
             }
 
             #typewriter {
-                margin-right: 0.15em;
+                margin-right: 0.3em;
             }
 
             #typewriter::after {
-                margin-left: 0.12em;
+                margin-left: 0.25em;
+                transform: translateX(0.06em);
             }
         }
     </style>
