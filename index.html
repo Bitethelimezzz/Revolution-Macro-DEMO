@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Revolution Macro</title>
     <style>
         @font-face {
@@ -179,6 +178,21 @@
             color: color-mix(in oklab, var(--color-white) 70%, transparent);
         }
 
+        #typewriter {
+            position: relative;
+            animation: show .25s cubic-bezier(.2, 0, 0, 1);
+        }
+
+        #typewriter::after {
+            content: '|';
+            color: var(--color-primary);
+            font-weight: var(--font-weight-medium);
+            animation: blink 1s step-end infinite;
+            position: absolute;
+            right: -0.5em;
+            top: 0;
+        }
+
         .cta-btn {
             z-index: 0;
             background: linear-gradient(#2563eb, #1e40af);
@@ -321,6 +335,11 @@
         @keyframes star-fade {
             0%, 100% { opacity: 0; }
             50% { opacity: 1; }
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
         }
 
         .star {
@@ -502,7 +521,7 @@
         <div class="hero-content">
             <img src="/images/revolution-logo.png" alt="Revolution Logo" class="logo">
             <h1>Welcome to Revolution!</h1>
-            <p>Your ultimate macro solution for Bee Swarm Simulator</p>
+            <p>Your <span id="typewriter">ultimate</span> macro solution for Bee Swarm Simulator</p>
             <a href="https://discord.gg/bm2bcwZWkj" class="cta-btn">Join Our Discord</a>
         </div>
     </section>
@@ -567,6 +586,48 @@
                 header.classList.remove('header-scrolled');
             }
         });
+
+        // Typewriter effect
+        const words = ['ultimate', 'prime', 'elite', 'superb', 'top', 'final', 'best'];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let currentWord = '';
+        let isDeleting = false;
+        const typewriterElement = document.getElementById('typewriter');
+
+        function typewriter() {
+            const word = words[wordIndex];
+
+            if (!isDeleting) {
+                // Typing
+                currentWord = word.substring(0, charIndex + 1);
+                typewriterElement.textContent = currentWord;
+                charIndex++;
+
+                if (charIndex === word.length) {
+                    isDeleting = true;
+                    setTimeout(typewriter, 1000); // Pause before deleting
+                } else {
+                    setTimeout(typewriter, 150); // Typing speed
+                }
+            } else {
+                // Deleting
+                currentWord = word.substring(0, charIndex);
+                typewriterElement.textContent = currentWord;
+                charIndex--;
+
+                if (charIndex < 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                    setTimeout(typewriter, 500); // Pause before next word
+                } else {
+                    setTimeout(typewriter, 100); // Deleting speed
+                }
+            }
+        }
+
+        // Start typewriter effect after initial delay
+        setTimeout(typewriter, 1000);
     </script>
 </body>
 </html>
