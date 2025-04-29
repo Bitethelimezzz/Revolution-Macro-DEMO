@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revolution Macro | Bee Swarm Simulator</title>
+    <title>Home | Revolution Macro</title>
     <style>
         * {
             margin: 0;
@@ -19,6 +19,48 @@
             padding: 0;
         }
 
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(51, 51, 51, 0.9);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .header .logo {
+            width: 60px;
+        }
+
+        .header .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header .nav-links a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .header .nav-links a:hover {
+            color: #e6b800;
+        }
+
+        .header .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #ffcc00;
+        }
+
         #hero {
             height: 100vh;
             background: url('/images/hero-bg.jpg') no-repeat center center;
@@ -31,6 +73,7 @@
             flex-direction: column;
             position: relative;
             animation: fadeIn 1.5s ease-in;
+            margin-top: 80px; /* Offset for fixed header */
         }
 
         #hero .overlay {
@@ -178,6 +221,38 @@
 
         /* Mobile-friendly adjustments */
         @media (max-width: 768px) {
+            .header {
+                padding: 10px 15px;
+            }
+
+            .header .logo {
+                width: 50px;
+            }
+
+            .header .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: rgba(51, 51, 51, 0.95);
+                padding: 20px;
+                text-align: center;
+            }
+
+            .header .nav-links.active {
+                display: flex;
+            }
+
+            .header .menu-toggle {
+                display: block;
+            }
+
+            #hero {
+                margin-top: 60px;
+            }
+
             #hero h1 {
                 font-size: 2rem;
             }
@@ -233,6 +308,19 @@
         }
 
         @media (max-width: 480px) {
+            .header .logo {
+                width: 40px;
+            }
+
+            .header .nav-links {
+                top: 50px;
+                padding: 15px;
+            }
+
+            .header .nav-links a {
+                font-size: 0.9rem;
+            }
+
             #hero h1 {
                 font-size: 1.5rem;
             }
@@ -275,8 +363,16 @@
     </style>
 </head>
 <body>
+    <header class="header">
+        <img src="/images/revolution-logo.png" alt="Revolution Logo" class="logo">
+        <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="Download.html">Download</a>
+        </nav>
+    </header>
 
-    <header id="hero">
+    <section id="hero">
         <div class="overlay"></div>
         <div class="hero-content">
             <img src="/images/revolution-logo.png" alt="Revolution Logo" class="logo">
@@ -284,7 +380,7 @@
             <p>Your ultimate macro solution for Bee Swarm Simulator</p>
             <a href="https://discord.gg/bm2bcwZWkj" class="cta-btn">Join Our Discord</a>
         </div>
-    </header>
+    </section>
 
     <section class="section" id="about">
         <h2>What is Revolution?</h2>
@@ -332,5 +428,11 @@
         <p><a href="https://discord.gg/bm2bcwZWkj">Join Our Discord</a></p>
     </footer>
 
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
