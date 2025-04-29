@@ -36,9 +36,9 @@
             --font-weight-semibold: 600;
             --font-weight-bold: 700;
             --tracking-tight: -.025em;
-            --ease-out: cubic-bezier(0, 0, .2, 1);
-            --default-transition-duration: .15s;
-            --default-transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+            --ease-out: cubic-bezier(.3, 0, .1, 1);
+            --default-transition-duration: .4s;
+            --default-transition-timing-function: cubic-bezier(.3, 0, .1, 1);
         }
 
         * {
@@ -125,8 +125,8 @@
         .section {
             padding: calc(var(--spacing) * 16) calc(var(--spacing) * 6);
             text-align: center;
-            margin-top: 80px;
             animation: fade .25s ease-out;
+            margin-top: 80px;
         }
 
         .section h2 {
@@ -152,137 +152,14 @@
             font-size: 1.1rem;
             text-decoration: none;
             border-radius: var(--radius-md);
-            transition: background-color .3s ease-out, transform .3s ease-out;
+            transition: filter var(--default-transition-duration) var(--ease-out), transform var(--default-transition-duration) var(--ease-out);
             display: inline-block;
-            cursor: pointer;
-            min-width: 150px;
-            text-align: center;
+            animation: show .25s cubic-bezier(.2, 0, 0, 1);
         }
 
         .cta-btn:hover {
-            background: color-mix(in oklab, var(--color-primary) 30%, transparent);
-        }
-
-        .cta-btn:active {
-            transform: scale(0.98);
-        }
-
-        .download-options {
-            display: flex;
-            justify-content: center;
-            gap: calc(var(--spacing) * 6);
-            flex-wrap: wrap;
-            margin-top: calc(var(--spacing) * 8);
-        }
-
-        .download-card {
-            background: color-mix(in oklab, var(--color-white) 10%, transparent);
-            padding: calc(var(--spacing) * 6);
-            width: 250px;
-            box-shadow: 0 4px 12px color-mix(in oklab, var(--color-primary) 10%, transparent);
-            border-radius: var(--radius-lg);
-            transition: transform .3s ease-out, box-shadow .3s ease-out;
-            animation: show .25s cubic-bezier(.2, 0, 0, 1);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 200px;
-        }
-
-        .download-card:hover {
+            filter: brightness(1.2);
             transform: scale(1.05);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .download-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: calc(var(--spacing) * 4);
-        }
-
-        .download-card p {
-            font-size: 1rem;
-            margin-bottom: calc(var(--spacing) * 4);
-            flex-grow: 1;
-        }
-
-        .download-card .cta-btn {
-            margin-top: auto;
-            align-self: center;
-        }
-
-        dialog {
-            background: color-mix(in oklab, var(--color-white) 10%, transparent);
-            border: none;
-            border-radius: var(--radius-lg);
-            padding: calc(var(--spacing) * 6);
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            animation: show .25s cubic-bezier(.2, 0, 0, 1);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-            z-index: 1001;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        dialog::backdrop {
-            background: color-mix(in oklab, var(--color-black) 45%, transparent);
-            -webkit-backdrop-filter: blur(var(--blur-md));
-            backdrop-filter: blur(var(--blur-md));
-        }
-
-        dialog h3 {
-            font-size: 1.8rem;
-            margin-bottom: calc(var(--spacing) * 4);
-        }
-
-        dialog p {
-            font-size: 1.1rem;
-            margin-bottom: calc(var(--spacing) * 6);
-            color: color-mix(in oklab, var(--color-white) 70%, transparent);
-        }
-
-        .dialog-buttons {
-            display: flex;
-            justify-content: center;
-            gap: calc(var(--spacing) * 4);
-        }
-
-        .dialog-btn {
-            padding: calc(var(--spacing) * 4) calc(var(--spacing) * 8);
-            font-size: 1.1rem;
-            border-radius: var(--radius-md);
-            min-width: 150px;
-            cursor: pointer;
-            transition: background-color .3s ease-out, transform .3s ease-out;
-        }
-
-        dialog .cta-btn {
-            background: linear-gradient(#2563eb, #1e40af);
-            box-shadow: 0 4px 6px -1px color-mix(in oklab, var(--color-primary) 10%, transparent);
-            color: var(--color-white);
-            border: none;
-            text-decoration: none;
-        }
-
-        dialog .cta-btn:hover {
-            background: color-mix(in oklab, var(--color-primary) 30%, transparent);
-        }
-
-        dialog .close-btn {
-            background: none;
-            border: 1px solid color-mix(in oklab, var(--color-white) 20%, transparent);
-            color: var(--color-white);
-        }
-
-        dialog .close-btn:hover {
-            background: color-mix(in oklab, var(--color-white) 10%, transparent);
-        }
-
-        dialog .dialog-btn:active {
-            transform: scale(0.98);
         }
 
         footer {
@@ -388,37 +265,9 @@
                 padding: 0 calc(var(--spacing) * 3);
             }
 
-            .download-options {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .download-card {
-                width: 90%;
-                margin-bottom: calc(var(--spacing) * 6);
-            }
-
-            .download-card h3 {
-                font-size: 1.5rem;
-            }
-
-            dialog {
-                padding: calc(var(--spacing) * 4);
-                max-width: 90%;
-            }
-
-            dialog h3 {
-                font-size: 1.5rem;
-            }
-
-            dialog p {
-                font-size: 1rem;
-            }
-
-            .dialog-btn {
+            .cta-btn {
                 padding: calc(var(--spacing) * 3) calc(var(--spacing) * 6);
                 font-size: 1rem;
-                min-width: 120px;
             }
         }
 
@@ -444,26 +293,9 @@
                 font-size: 0.9rem;
             }
 
-            .download-card h3 {
-                font-size: 1.3rem;
-            }
-
-            .download-card p {
-                font-size: 0.9rem;
-            }
-
-            dialog h3 {
-                font-size: 1.3rem;
-            }
-
-            dialog p {
-                font-size: 0.9rem;
-            }
-
-            .dialog-btn {
+            .cta-btn {
                 padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
                 font-size: 0.9rem;
-                min-width: 100px;
             }
 
             footer {
@@ -484,30 +316,10 @@
     </header>
 
     <section class="section" id="download">
-        <h2>Download Revolution Macro 0.3b</h2>
-        <p>Download Revolution Macro 0.3b for Bee Swarm Simulator. Choose your platform below to get the latest version (MacOS: .dmg, Windows: .zip). Join our Discord for support and updates!</p>
-        <div class="download-options">
-            <div class="download-card">
-                <h3>Windows</h3>
-                <p>Compatible with Windows 10 and above (.zip file).</p>
-                <button class="cta-btn" onclick="openDialog()">Download</button>
-            </div>
-            <div class="download-card">
-                <h3>MacOS</h3>
-                <p>Compatible with MacOS Ventura and above (.dmg file).</p>
-                <button class="cta-btn" onclick="openDialog()">Download</button>
-            </div>
-        </div>
+        <h2>Download Revolution Macro</h2>
+        <p>Get started with Revolution Macro for Bee Swarm Simulator. It’s completely free, easy to install, and supports macOS High Sierra (10.13) and above, as well as Windows 10/11.</p>
+        <a href="https://github.com/revolution-macro/download" class="cta-btn">Download Now</a>
     </section>
-
-    <dialog id="download-dialog">
-        <h3>Join Our Discord</h3>
-        <p>Downloads are only available on our Discord server. Click below to join and get Revolution Macro!</p>
-        <div class="dialog-buttons">
-            <a href="https://discord.gg/bm2bcwZWkj" class="dialog-btn cta-btn">Join Discord</a>
-            <button class="dialog-btn close-btn" onclick="closeDialog()">Close</button>
-        </div>
-    </dialog>
 
     <footer>
         <p>© 2025 Revolution Macro | All rights reserved</p>
@@ -518,16 +330,6 @@
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('active');
-        }
-
-        function openDialog() {
-            const dialog = document.getElementById('download-dialog');
-            dialog.showModal();
-        }
-
-        function closeDialog() {
-            const dialog = document.getElementById('download-dialog');
-            dialog.close();
         }
 
         window.addEventListener('scroll', () => {
