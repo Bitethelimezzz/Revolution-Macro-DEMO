@@ -36,9 +36,9 @@
             --font-weight-semibold: 600;
             --font-weight-bold: 700;
             --tracking-tight: -.025em;
-            --ease-out: cubic-bezier(0, 0, .2, 1);
-            --default-transition-duration: .15s;
-            --default-transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+            --ease-out: cubic-bezier(.3, 0, .1, 1);
+            --default-transition-duration: .4s;
+            --default-transition-timing-function: cubic-bezier(.3, 0, .1, 1);
         }
 
         * {
@@ -190,17 +190,14 @@
             font-size: 1.1rem;
             text-decoration: none;
             border-radius: var(--radius-md);
-            transition: background-color .3s ease-out, transform .3s ease-out;
+            transition: filter var(--default-transition-duration) var(--ease-out), transform var(--default-transition-duration) var(--ease-out);
             display: inline-block;
             animation: show .25s cubic-bezier(.2, 0, 0, 1);
         }
 
         .cta-btn:hover {
-            background: color-mix(in oklab, var(--color-primary) 30%, transparent);
-        }
-
-        .cta-btn:active {
-            transform: scale(0.98);
+            filter: brightness(1.2);
+            transform: scale(1.05);
         }
 
         .section {
