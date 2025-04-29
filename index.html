@@ -67,26 +67,22 @@
             top: 0;
             left: 0;
             right: 0;
-            background: color-mix(in oklab, var(--color-secondary) 80%, transparent);
+            background: #1A2526; /* Atlas OS header background */
             padding: calc(var(--spacing) * 4) calc(var(--spacing) * 6);
             display: flex;
-            justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            transition: background-color .3s ease-out;
-        }
-
-        .header.header-scrolled {
-            -webkit-backdrop-filter: blur(var(--blur-md));
-            backdrop-filter: blur(var(--blur-md));
         }
 
         .header .logo {
             width: 60px;
+            margin-right: calc(var(--spacing) * 6);
         }
 
         .header .nav-links {
+            flex: 1;
             display: flex;
+            justify-content: center;
             gap: calc(var(--spacing) * 6);
         }
 
@@ -95,24 +91,11 @@
             text-decoration: none;
             font-size: 1rem;
             font-weight: var(--font-weight-medium);
-            position: relative;
+            transition: color 0.2s ease-out;
         }
 
-        .header .nav-links a::after {
-            content: '';
-            transform-origin: 0;
-            background: var(--color-primary);
-            height: 1px;
-            transition: transform .2s ease-out;
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            right: 0;
-            transform: scaleX(0);
-        }
-
-        .header .nav-links a:hover::after {
-            transform: scaleX(1);
+        .header .nav-links a:hover {
+            color: var(--color-primary);
         }
 
         .header .menu-toggle {
@@ -133,7 +116,7 @@
             align-items: center;
             flex-direction: column;
             position: relative;
-            margin-top: 80px;
+            margin-top: 0; /* Fixed to remove gap */
             animation: fade .25s ease-out;
         }
 
@@ -341,10 +324,12 @@
         @media (max-width: 768px) {
             .header {
                 padding: calc(var(--spacing) * 3) calc(var(--spacing) * 4);
+                justify-content: space-between;
             }
 
             .header .logo {
                 width: 50px;
+                margin-right: 0;
             }
 
             .header .nav-links {
@@ -354,11 +339,9 @@
                 top: 60px;
                 left: 0;
                 right: 0;
-                background: color-mix(in oklab, var(--color-secondary) 95%, transparent);
+                background: #1A2526;
                 padding: calc(var(--spacing) * 6);
                 text-align: center;
-                -webkit-backdrop-filter: blur(5px);
-                backdrop-filter: blur(5px);
             }
 
             .header .nav-links.active {
@@ -370,7 +353,7 @@
             }
 
             #hero {
-                margin-top: 60px;
+                margin-top: 0;
             }
 
             #hero h1 {
