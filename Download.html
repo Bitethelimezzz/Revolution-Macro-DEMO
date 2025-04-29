@@ -53,6 +53,13 @@
             background-color: var(--bg-primary);
             color: #fff;
             padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -155,11 +162,64 @@
             transition: filter var(--default-transition-duration) var(--ease-out), transform var(--default-transition-duration) var(--ease-out);
             display: inline-block;
             animation: show .25s cubic-bezier(.2, 0, 0, 1);
+            cursor: pointer;
         }
 
         .cta-btn:hover {
             filter: brightness(1.2);
             transform: scale(1.05);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: color-mix(in oklab, var(--color-black) 50%, transparent);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: color-mix(in oklab, var(--color-secondary) 95%, transparent);
+            -webkit-backdrop-filter: blur(var(--blur-md));
+            backdrop-filter: blur(var(--blur-md));
+            border-radius: var(--radius-lg);
+            padding: calc(var(--spacing) * 8);
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: calc(var(--spacing) * 4);
+        }
+
+        .modal-content p {
+            font-size: 1rem;
+            margin-bottom: calc(var(--spacing) * 6);
+            color: color-mix(in oklab, var(--color-white) 80%, transparent);
+        }
+
+        .modal-content .cta-btn {
+            padding: calc(var(--spacing) * 3) calc(var(--spacing) * 6);
+        }
+
+        .modal-content .close-btn {
+            position: absolute;
+            top: calc(var(--spacing) * 4);
+            right: calc(var(--spacing) * 4);
+            font-size: 1.5rem;
+            color: var(--color-white);
+            cursor: pointer;
+            background: none;
+            border: none;
         }
 
         footer {
@@ -269,6 +329,23 @@
                 padding: calc(var(--spacing) * 3) calc(var(--spacing) * 6);
                 font-size: 1rem;
             }
+
+            .modal-content {
+                padding: calc(var(--spacing) * 6);
+            }
+
+            .modal-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .modal-content p {
+                font-size: 0.9rem;
+            }
+
+            .modal-content .cta-btn {
+                padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+                font-size: 0.9rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -298,6 +375,18 @@
                 font-size: 0.9rem;
             }
 
+            .modal-content {
+                padding: calc(var(--spacing) * 4);
+            }
+
+            .modal-content h3 {
+                font-size: 1.3rem;
+            }
+
+            .modal-content p {
+                font-size: 0.85rem;
+            }
+
             footer {
                 padding: calc(var(--spacing) * 4);
                 font-size: 0.9rem;
@@ -315,11 +404,22 @@
         </nav>
     </header>
 
-    <section class="section" id="download">
-        <h2>Download Revolution Macro</h2>
-        <p>Get started with Revolution Macro for Bee Swarm Simulator. It’s completely free, easy to install, and supports macOS High Sierra (10.13) and above, as well as Windows 10/11.</p>
-        <a href="https://github.com/revolution-macro/download" class="cta-btn">Download Now</a>
-    </section>
+    <main>
+        <section class="section" id="download">
+            <h2>Download Revolution Macro</h2>
+            <p>Get started with Revolution Macro for Bee Swarm Simulator. It’s completely free, easy to install, and supports macOS High Sierra (10.13) and above, as well as Windows 10/11.</p>
+            <button class="cta-btn" onclick="showModal()">Download Now</button>
+        </section>
+    </main>
+
+    <div class="modal" id="download-modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="hideModal()">×</button>
+            <h3>Join Our Discord</h3>
+            <p>To download Revolution Macro, please join our Discord community for the latest updates and download links.</p>
+            <a href="https://discord.gg/bm2bcwZWkj" class="cta-btn">Join Discord</a>
+        </div>
+    </div>
 
     <footer>
         <p>© 2025 Revolution Macro | All rights reserved</p>
@@ -340,6 +440,16 @@
                 header.classList.remove('header-scrolled');
             }
         });
+
+        function showModal() {
+            const modal = document.getElementById('download-modal');
+            modal.style.display = 'flex';
+        }
+
+        function hideModal() {
+            const modal = document.getElementById('download-modal');
+            modal.style.display = 'none';
+        }
     </script>
 </body>
 </html>
