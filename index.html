@@ -179,15 +179,6 @@
             color: color-mix(in oklab, var(--color-white) 70%, transparent);
         }
 
-        #typewriter {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 0.15em solid var(--color-primary);
-            letter-spacing: var(--tracking-tight);
-            animation: typing 1.5s steps(10, end), blink 0.5s step-end infinite;
-        }
-
         .cta-btn {
             z-index: 0;
             background: linear-gradient(#2563eb, #1e40af);
@@ -332,16 +323,6 @@
             50% { opacity: 1; }
         }
 
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes blink {
-            0%, 50% { border-color: var(--color-primary); }
-            51%, 100% { border-color: transparent; }
-        }
-
         .star {
             position: absolute;
             background: var(--color-white);
@@ -444,11 +425,6 @@
             .feature-card img {
                 width: 50px;
             }
-
-            #typewriter {
-                border-right-width: 0.12em;
-                animation: typing 1.5s steps(10, end), blink 0.5s step-end infinite;
-            }
         }
 
         @media (max-width: 480px) {
@@ -503,11 +479,6 @@
                 padding: calc(var(--spacing) * 4);
                 font-size: 0.9rem;
             }
-
-            #typewriter {
-                border-right-width: 0.1em;
-                animation: typing 1.5s steps(10, end), blink 0.5s step-end infinite;
-            }
         }
     </style>
 </head>
@@ -531,7 +502,7 @@
         <div class="hero-content">
             <img src="/images/revolution-logo.png" alt="Revolution Logo" class="logo">
             <h1>Welcome to Revolution!</h1>
-            <p>Your <span id="typewriter">ultimate</span> macro solution for Bee Swarm Simulator</p>
+            <p>Your ultimate macro solution for Bee Swarm Simulator</p>
             <a href="https://discord.gg/bm2bcwZWkj" class="cta-btn">Join Our Discord</a>
         </div>
     </section>
@@ -596,54 +567,6 @@
                 header.classList.remove('header-scrolled');
             }
         });
-
-        // Typewriter effect
-        const words = ['ultimate', 'prime', 'elite', 'superb', 'top', 'final', 'best'];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let currentWord = '';
-        let isDeleting = false;
-        const typewriterElement = document.getElementById('typewriter');
-
-        function typewriter() {
-            const word = words[wordIndex];
-
-            if (!isDeleting) {
-                // Typing
-                currentWord = word.substring(0, charIndex + 1);
-                typewriterElement.textContent = currentWord;
-                charIndex++;
-
-                if (charIndex === word.length) {
-                    isDeleting = true;
-                    setTimeout(typewriter, 1000); // Pause before deleting
-                } else {
-                    setTimeout(typewriter, 150); // Typing speed
-                }
-            } else {
-                // Deleting
-                currentWord = word.substring(0, charIndex);
-                typewriterElement.textContent = currentWord;
-                charIndex--;
-
-                if (charIndex < 0) {
-                    isDeleting = false;
-                    wordIndex = (wordIndex + 1) % words.length;
-                    setTimeout(() => {
-                        // Reset animation by removing and re-adding a class
-                        typewriterElement.style.animation = 'none';
-                        void typewriterElement.offsetWidth; // Trigger reflow
-                        typewriterElement.style.animation = 'typing 1.5s steps(10, end), blink 0.5s step-end infinite';
-                        typewriter();
-                    }, 500); // Pause before next word
-                } else {
-                    setTimeout(typewriter, 100); // Deleting speed
-                }
-            }
-        }
-
-        // Start typewriter effect after initial delay
-        setTimeout(typewriter, 1000);
     </script>
 </body>
 </html>
