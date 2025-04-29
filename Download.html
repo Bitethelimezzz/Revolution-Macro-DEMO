@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download | Revolution Macro</title>
+    <title>Home | Revolution Macro</title>
     <style>
         @font-face {
             font-family: 'Inter Variable';
@@ -31,7 +31,7 @@
             --spacing: .25rem;
             --radius-md: .375rem;
             --radius-lg: .5rem;
-            --blur-md: 12px;
+            --blur-md: 8px; /* Reduced for softer blur */
             --font-weight-medium: 500;
             --font-weight-semibold: 600;
             --font-weight-bold: 700;
@@ -50,7 +50,7 @@
         body {
             font-family: var(--font-sans);
             line-height: 1.6;
-            background-color: var(--bg-primary);
+            background: radial-gradient(circle at top, oklch(.15 .05 264.82), var(--bg-primary));
             color: #fff;
             padding: 0;
         }
@@ -68,35 +68,40 @@
             left: 0;
             right: 0;
             background: color-mix(in oklab, var(--color-secondary) 80%, transparent);
-            padding: calc(var(--spacing) * 4) calc(var(--spacing) * 6);
+            padding: calc(var(--spacing) * 5) calc(var(--spacing) * 8); /* Increased padding */
             display: flex;
             align-items: center;
+            justify-content: flex-end; /* Align menu toggle to the right */
             z-index: 1000;
-            transition: background-color .3s ease-out;
+            transition: background-color .3s ease-out, box-shadow .3s ease-out;
         }
 
         .header.header-scrolled {
             -webkit-backdrop-filter: blur(var(--blur-md));
             backdrop-filter: blur(var(--blur-md));
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Added shadow on scroll */
         }
 
         .header .logo {
+            position: absolute;
+            left: calc(var(--spacing) * 8);
+            top: 50%;
+            transform: translateY(-50%);
             width: 60px;
-            margin-right: calc(var(--spacing) * 6);
         }
 
         .header .nav-links {
-            flex: 1;
             display: flex;
             justify-content: center;
-            gap: calc(var(--spacing) * 6);
+            gap: calc(var(--spacing) * 8); /* Increased gap for better spacing */
+            width: 100%;
         }
 
         .header .nav-links a {
             color: var(--color-white);
             text-decoration: none;
             font-size: 1rem;
-            font-weight: var(--font-weight-medium);
+            font-weight: var(--font-weight-semibold); /* Bolder links */
             transition: color 0.2s ease-out;
         }
 
@@ -111,16 +116,98 @@
             color: var(--color-white);
         }
 
+        #hero {
+            height: 100vh;
+            background: url('/images/hero-bg.jpg') no-repeat center center;
+            background-size: cover;
+            color: var(--color-white);
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            margin-top: 0;
+            animation: fade .25s ease-out;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, hsla(209, 100%, 42%, 0) 0%, hsla(209, 100%, 42%, 0) 50%, hsla(209, 100%, 12%, 0.4) 100%);
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        #hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: color-mix(in oklab, var(--color-black) 45%, transparent);
+            z-index: 2;
+        }
+
+        #hero .hero-content {
+            position: relative;
+            z-index: 3;
+            padding: 0 calc(var(--spacing) * 6);
+        }
+
+        #hero .logo {
+            width: 140px;
+            margin-bottom: calc(var(--spacing) * 6);
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: calc(var(--spacing) * 4);
+            animation: show .25s cubic-bezier(.2, 0, 0, 1);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Added for readability */
+        }
+
+        #hero p {
+            font-size: 1.3rem;
+            margin-bottom: calc(var(--spacing) * 8);
+            color: color-mix(in oklab, var(--color-white) 70%, transparent);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-btn {
+            z-index: 0;
+            background: linear-gradient(#3B82F6, #1D4ED8); /* Vibrant gradient */
+            position: relative;
+            box-shadow: 0 4px 6px -1px color-mix(in oklab, var(--color-primary) 10%, transparent);
+            color: var(--color-white);
+            padding: calc(var(--spacing) * 4) calc(var(--spacing) * 8);
+            border: none;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: filter var(--default-transition-duration) var(--ease-out), transform var(--default-transition-duration) var(--ease-out), box-shadow 0.3s ease-out;
+            display: inline-block;
+            animation: show .25s cubic-bezier(.2, 0, 0, 1);
+        }
+
+        .cta-btn:hover {
+            filter: brightness(1.2);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); /* Glowing effect */
+        }
+
         .section {
-            padding: calc(var(--spacing) * 16) calc(var(--spacing) * 6);
+            padding: calc(var(--spacing) * 20) calc(var(--spacing) * 8); /* Increased padding */
             text-align: center;
             animation: fade .25s ease-out;
-            margin-top: 80px; /* Space for fixed header */
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)); /* Subtle gradient */
         }
 
         .section h2 {
             font-size: 2.5rem;
             margin-bottom: calc(var(--spacing) * 6);
+            color: var(--color-white); /* Brighter for contrast */
         }
 
         .section p {
@@ -130,32 +217,55 @@
             color: color-mix(in oklab, var(--color-white) 70%, transparent);
         }
 
-        .cta-btn {
-            z-index: 0;
-            background: linear-gradient(#2563eb, #1e40af);
-            position: relative;
-            box-shadow: 0 4px 6px -1px color-mix(in oklab, var(--color-primary) 10%, transparent);
-            color: var(--color-white);
-            padding: calc(var(--spacing) * 4) calc(var(--spacing) * 8);
-            border: none;
-            font-size: 1.1rem;
-            text-decoration: none;
-            border-radius: var(--radius-md);
-            transition: filter var(--default-transition-duration) var(--ease-out), transform var(--default-transition-duration) var(--ease-out);
-            display: inline-block;
+        .feature-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: calc(var(--spacing) * 8);
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feature-card {
+            background: color-mix(in oklab, var(--color-white) 10%, transparent);
+            padding: calc(var(--spacing) * 6);
+            width: 30%;
+            min-width: 250px;
+            box-shadow: 0 4px 12px color-mix(in oklab, var(--color-primary) 10%, transparent);
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Added border */
+            border-radius: var(--radius-lg);
+            margin-bottom: calc(var(--spacing) * 8);
+            transition: transform .3s ease-out, box-shadow .3s ease-out;
+            text-align: left;
             animation: show .25s cubic-bezier(.2, 0, 0, 1);
         }
 
-        .cta-btn:hover {
-            filter: brightness(1.2);
+        .feature-card:hover {
             transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .feature-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: calc(var(--spacing) * 4);
+        }
+
+        .feature-card p {
+            font-size: 1rem;
+        }
+
+        .feature-card img {
+            width: 60px;
+            margin-right: calc(var(--spacing) * 3);
+            vertical-align: middle;
         }
 
         footer {
             background: var(--color-secondary);
             color: var(--color-white);
             text-align: center;
-            padding: calc(var(--spacing) * 6);
+            padding: calc(var(--spacing) * 8); /* Adjusted padding */
             position: relative;
             z-index: 1;
         }
@@ -179,6 +289,11 @@
             color: var(--color-primary);
             text-decoration: none;
             position: relative;
+            transition: transform 0.2s ease-out;
+        }
+
+        footer a:hover {
+            transform: scale(1.05); /* Subtle hover effect */
         }
 
         footer a::after {
@@ -208,16 +323,35 @@
             100% { opacity: 1; transform: scale(1); }
         }
 
+        @keyframes star-fade {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .star {
+            position: absolute;
+            background: var(--color-white);
+            border-radius: 50%;
+            z-index: 1;
+            animation: star-fade 6s ease-in-out infinite;
+        }
+
+        .star:nth-child(1) { width: 2px; height: 2px; top: 5%; left: 20%; animation-delay: 0s; }
+        .star:nth-child(2) { width: 3px; height: 3px; top: 15%; left: 70%; animation-delay: 1s; }
+        .star:nth-child(3) { width: 1.5px; height: 1.5px; top: 30%; left: 40%; animation-delay: 2s; }
+        .star:nth-child(4) { width: 2.5px; height: 2.5px; top: 60%; left: 10%; animation-delay: 3s; }
+        .star:nth-child(5) { width: 1.8px; height: 1.8px; top: 75%; left: 85%; animation-delay: 4s; }
+
         /* Mobile-friendly adjustments */
         @media (max-width: 768px) {
             .header {
-                padding: calc(var(--spacing) * 3) calc(var(--spacing) * 4);
-                justify-content: space-between;
+                padding: calc(var(--spacing) * 4) calc(var(--spacing) * 6);
+                justify-content: flex-end;
             }
 
             .header .logo {
+                left: calc(var(--spacing) * 6);
                 width: 50px;
-                margin-right: 0;
             }
 
             .header .nav-links {
@@ -230,8 +364,9 @@
                 background: color-mix(in oklab, var(--color-secondary) 95%, transparent);
                 padding: calc(var(--spacing) * 6);
                 text-align: center;
-                -webkit-backdrop-filter: blur(5px);
-                backdrop-filter: blur(5px);
+                -webkit-backdrop-filter: blur(var(--blur-md));
+                backdrop-filter: blur(var(--blur-md));
+                width: auto;
             }
 
             .header .nav-links.active {
@@ -242,9 +377,30 @@
                 display: block;
             }
 
+            #hero {
+                margin-top: 0;
+            }
+
+            #hero h1 {
+                font-size: 2rem;
+            }
+
+            #hero p {
+                font-size: 1rem;
+                margin-bottom: calc(var(--spacing) * 6);
+            }
+
+            #hero .logo {
+                width: 100px;
+            }
+
+            .cta-btn {
+                padding: calc(var(--spacing) * 3) calc(var(--spacing) * 6);
+                font-size: 1rem;
+            }
+
             .section {
-                padding: calc(var(--spacing) * 10) calc(var(--spacing) * 4);
-                margin-top: 60px;
+                padding: calc(var(--spacing) * 12) calc(var(--spacing) * 4);
             }
 
             .section h2 {
@@ -256,15 +412,33 @@
                 padding: 0 calc(var(--spacing) * 3);
             }
 
-            .cta-btn {
-                padding: calc(var(--spacing) * 3) calc(var(--spacing) * 6);
-                font-size: 1rem;
+            .feature-list {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature-card {
+                width: 90%;
+                margin-bottom: calc(var(--spacing) * 6);
+            }
+
+            .feature-card h3 {
+                font-size: 1.5rem;
+            }
+
+            .feature-card p {
+                font-size: 0.9rem;
+            }
+
+            .feature-card img {
+                width: 50px;
             }
         }
 
         @media (max-width: 480px) {
             .header .logo {
                 width: 40px;
+                left: calc(var(--spacing) * 4);
             }
 
             .header .nav-links {
@@ -276,6 +450,24 @@
                 font-size: 0.9rem;
             }
 
+            #hero h1 {
+                font-size: 1.5rem;
+            }
+
+            #hero p {
+                font-size: 0.9rem;
+                margin-bottom: calc(var(--spacing) * 4);
+            }
+
+            #hero .logo {
+                width: 80px;
+            }
+
+            .cta-btn {
+                padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+                font-size: 0.9rem;
+            }
+
             .section h2 {
                 font-size: 1.5rem;
             }
@@ -284,13 +476,16 @@
                 font-size: 0.9rem;
             }
 
-            .cta-btn {
-                padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
-                font-size: 0.9rem;
+            .feature-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .feature-card p {
+                font-size: 0.85rem;
             }
 
             footer {
-                padding: calc(var(--spacing) * 4);
+                padding: calc(var(--spacing) * 6);
                 font-size: 0.9rem;
             }
         }
@@ -306,10 +501,61 @@
         </nav>
     </header>
 
-    <section class="section">
-        <h2>Download Revolution Macro</h2>
-        <p>Get started with Revolution Macro for Bee Swarm Simulator. Download the latest version below and join our community for support and updates.</p>
-        <a href="/downloads/revolution-macro-latest.zip" class="cta-btn">Download Now</a>
+    <section id="hero">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <img src="/images/revolution-logo.png" alt="Revolution Logo" class="logo">
+            <h1>Welcome to Revolution!</h1>
+            <p>Your ultimate macro solution for Bee Swarm Simulator</p>
+            <a href="https://discord.gg/bm2bcwZWkj" class="cta-btn">Join Our Discord</a>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <h2>What is Revolution?</h2>
+        <p>Revolution Macro is a new macro for Bee Swarm Simulator, created from the ground up using modern technologies. It's designed with accessibility and modernity in mind— Revolution supports both MacOS and Windows with an innovative web-based interface. Revolution is completely free and always will be, with a mission to address critical performance and customizability issues in existing macros.</p>
+    </section>
+
+    <section class="section" id="features">
+        <h2>Features</h2>
+        <div class="feature-list">
+            <div class="feature-card">
+                <img src="/images/vic-hop-icon.png" alt="Vic Hop Icon">
+                <h3>Vic Hop</h3>
+                <p>Collaborative passive/searcher vic-hop that can scale to dozens of accounts working together.</p>
+            </div>
+            <div class="feature-card">
+                <img src="/images/pathing-icon.png" alt="Pathing Icon">
+                <h3>Intelligent Pathing</h3>
+                <p>A no-reset pathing system that goes directly from point to point, improving your macro’s efficiency.</p>
+            </div>
+            <div class="feature-card">
+                <img src="/images/account-management-icon.png" alt="Account Management Icon">
+                <h3>Account Management</h3>
+                <p>Switch accounts on-the-fly and manage private servers with ease.</p>
+            </div>
+            <div class="feature-card">
+                <img src="/images/multi-instancing-icon.png" alt="Multi-Instancing Icon">
+                <h3>Multi-Instancing</h3>
+                <p>Run multiple accounts in a single desktop session (limited to passives only on Windows).</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="safety">
+        <h2>Is It Safe?</h2>
+        <p>Yes! Revolution is completely safe to use on both Mac and Windows. Revolution does not interact with the Roblox process; it only sends keyboard and mouse inputs and captures the Roblox window for essential macro functions. It does not share any sensitive data with the internet but does enable anonymized telemetry by default, which can be opted out of at any time.</p>
+    </section>
+
+    <section class="section" id="author">
+        <h2>About the Author</h2>
+        jayden is a cool dude who made this site for fun
+        <p>Revolution is a solo project created by Liam, a passionate developer with over 10 years of programming experience and 3 years in full-stack development. Frustrated with existing macro solutions and the toxic culture of gatekeeping in the Bee Swarm Simulator community, Liam started Revolution as a passion project in July 2023. Revolution was designed to be accessible, free, and built with care from a trusted developer.</p>
     </section>
 
     <footer>
