@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download | Revolution Macro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f8f8f8;
+            color: #333;
+            padding: 0;
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(51, 51, 51, 0.9);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .header .logo {
+            width: 60px;
+        }
+
+        .header .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header .nav-links a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .header .nav-links a:hover {
+            color: #e6b800;
+        }
+
+        .header .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #ffcc00;
+        }
+
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+            margin-top: 80px; /* Offset for fixed header */
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: #555;
+        }
+
+        .cta-btn {
+            background-color: #ffcc00;
+            color: black;
+            padding: 15px 30px;
+            border: none;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            background-color: #e6b800;
+        }
+
+        .download-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .download-card {
+            background-color: #fff;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .download-card:hover {
+            transform: scale(1.05);
+        }
+
+        .download-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile-friendly adjustments */
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 15px;
+            }
+
+            .header .logo {
+                width: 50px;
+            }
+
+            .header .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: rgba(51, 51, 51, 0.95);
+                padding: 20px;
+                text-align: center;
+            }
+
+            .header .nav-links.active {
+                display: flex;
+            }
+
+            .header .menu-toggle {
+                display: block;
+            }
+
+            .section {
+                padding: 30px 15px;
+                margin-top: 60px;
+            }
+
+            .section h2 {
+                font-size: 1.8rem;
+            }
+
+            .section p {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+
+            .download-options {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .download-card {
+                width: 90%;
+                margin-bottom: 20px;
+            }
+
+            .download-card h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header .logo {
+                width: 40px;
+            }
+
+            .header .nav-links {
+                top: 50px;
+                padding: 15px;
+            }
+
+            .header .nav-links a {
+                font-size: 0.9rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .section p {
+                font-size: 0.9rem;
+            }
+
+            .download-card h3 {
+                font-size: 1.3rem;
+            }
+
+            footer {
+                padding: 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="/images/revolution-logo.png" alt="Revolution Logo" class="logo">
+        <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="Download.html">Download</a>
+        </nav>
+    </header>
+
+    <section class="section" id="download">
+        <h2>Download Revolution Macro</h2>
+        <p>Get started with Revolution Macro for Bee Swarm Simulator. Choose your platform below to download the latest version. Join our Discord for support and updates!</p>
+        <div class="download-options">
+            <div class="download-card">
+                <h3>Windows</h3>
+                <p>Compatible with Windows 10 and above.</p>
+                <a href="#" class="cta-btn">Download for Windows</a>
+            </div>
+            <div class="download-card">
+                <h3>MacOS</h3>
+                <p>Compatible with MacOS Ventura and above.</p>
+                <a href="#" class="cta-btn">Download for MacOS</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Revolution Macro | All rights reserved</p>
+        <p><a href="https://discord.gg/bm2bcwZWkj">Join Our Discord</a></p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
