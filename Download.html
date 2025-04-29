@@ -137,6 +137,51 @@
             color: color-mix(in oklab, var(--color-white) 70%, transparent);
         }
 
+        .download-options {
+            display: flex;
+            justify-content: center;
+            gap: calc(var(--spacing) * 8);
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .download-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            padding: calc(var(--spacing) * 8);
+            width: 45%;
+            min-width: 300px;
+            box-shadow: 0 4px 12px color-mix(in oklab, var(--color-primary) 10%, transparent);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid transparent;
+            border-image: linear-gradient(to right, #3B82F6, #1D4ED8) 1;
+            border-radius: var(--radius-lg);
+            margin-bottom: calc(var(--spacing) * 8);
+            transition: transform .3s ease-out, box-shadow .3s ease-out;
+            text-align: center;
+            animation: show .25s cubic-bezier(.2, 0, 0, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .download-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .download-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: calc(var(--spacing) * 4);
+        }
+
+        .download-card p {
+            font-size: 1rem;
+            margin-bottom: calc(var(--spacing) * 6);
+            color: color-mix(in oklab, var(--color-white) 70%, transparent);
+            flex-grow: 1;
+        }
+
         .cta-btn {
             z-index: 0;
             background: linear-gradient(#3B82F6, #1D4ED8);
@@ -157,6 +202,71 @@
             filter: brightness(1.2);
             transform: scale(1.05);
             box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+
+        /* Popup Styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background: color-mix(in oklab, var(--color-secondary) 95%, transparent);
+            padding: calc(var(--spacing) * 8);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .popup-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: calc(var(--spacing) * 4);
+        }
+
+        .popup-content p {
+            font-size: 1rem;
+            margin-bottom: calc(var(--spacing) * 6);
+            color: color-mix(in oklab, var(--color-white) 80%, transparent);
+        }
+
+        .popup-buttons {
+            display: flex;
+            justify-content: center;
+            gap: calc(var(--spacing) * 4);
+            flex-wrap: wrap;
+        }
+
+        .popup-btn {
+            padding: calc(var(--spacing) * 3) calc(var(--spacing) * 6);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s ease-out, background 0.3s ease-out;
+        }
+
+        .popup-btn.discord {
+            background: linear-gradient(#5865F2, #454FBF);
+            color: var(--color-white);
+        }
+
+        .popup-btn.cancel {
+            background: color-mix(in oklab, var(--color-white) 20%, transparent);
+            color: var(--color-white);
+        }
+
+        .popup-btn:hover {
+            transform: scale(1.05);
         }
 
         footer {
@@ -270,9 +380,46 @@
                 padding: 0 calc(var(--spacing) * 3);
             }
 
+            .download-options {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .download-card {
+                width: 90%;
+                min-width: 250px;
+                margin-bottom: calc(var(--spacing) * 6);
+                padding: calc(var(--spacing) * 6);
+            }
+
+            .download-card h3 {
+                font-size: 1.5rem;
+            }
+
+            .download-card p {
+                font-size: 0.95rem;
+            }
+
             .cta-btn {
                 padding: calc(var(--spacing) * 3) calc(var(--spacing) * 6);
                 font-size: 1rem;
+            }
+
+            .popup-content {
+                padding: calc(var(--spacing) * 6);
+            }
+
+            .popup-content h3 {
+                font-size: 1.3rem;
+            }
+
+            .popup-content p {
+                font-size: 0.9rem;
+            }
+
+            .popup-btn {
+                padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+                font-size: 0.9rem;
             }
         }
 
@@ -299,9 +446,34 @@
                 font-size: 0.9rem;
             }
 
+            .download-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .download-card p {
+                font-size: 0.9rem;
+            }
+
             .cta-btn {
                 padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
                 font-size: 0.9rem;
+            }
+
+            .popup-content {
+                padding: calc(var(--spacing) * 4);
+            }
+
+            .popup-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .popup-content p {
+                font-size: 0.85rem;
+            }
+
+            .popup-buttons {
+                flex-direction: column;
+                gap: calc(var(--spacing) * 2);
             }
 
             footer {
@@ -323,9 +495,31 @@
 
     <section class="section">
         <h2>Download Revolution Macro</h2>
-        <p>Get started with Revolution Macro for Bee Swarm Simulator. Download the latest version below and join our community for support and updates.</p>
-        <a href="/downloads/revolution-macro-latest.zip" class="cta-btn">Download Now</a>
+        <p>Get started with Revolution Macro for Bee Swarm Simulator. Choose your platform below and join our community for support and updates.</p>
+        <div class="download-options">
+            <div class="download-card">
+                <h3>Windows</h3>
+                <p>Compatible with Windows 10 and later. Requires 4GB RAM and 500MB free storage.</p>
+                <a href="#" class="cta-btn" onclick="showPopup('/downloads/revolution-macro-windows.zip')">Download Now</a>
+            </div>
+            <div class="download-card">
+                <h3>MacOS</h3>
+                <p>Supports macOS High Sierra and above. Requires 4GB RAM and 500MB free storage.</p>
+                <a href="#" class="cta-btn" onclick="showPopup('/downloads/revolution-macro-macos.zip')">Download Now</a>
+            </div>
+        </div>
     </section>
+
+    <div class="popup" id="discordPopup">
+        <div class="popup-content">
+            <h3>Join Our Community!</h3>
+            <p>Please join our Discord server for support, updates, and to connect with other users before downloading.</p>
+            <div class="popup-buttons">
+                <button class="popup-btn discord" onclick="joinDiscord()">Join Discord</button>
+                <button class="popup-btn cancel" onclick="closePopup()">Cancel</button>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <p>© 2025 Revolution Macro | All rights reserved</p>
@@ -346,6 +540,18 @@
                 header.classList.remove('header-scrolled');
             }
         });
+
+        function showPopup() {
+            document.getElementById('discordPopup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('discordPopup').style.display = 'none';
+        }
+
+        function joinDiscord() {
+            window.open('https://discord.gg/bm2bcwZWkj', '_blank');
+        }
     </script>
 </body>
 </html>
