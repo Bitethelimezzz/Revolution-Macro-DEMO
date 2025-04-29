@@ -49,6 +49,11 @@
             padding: 0 20px;
         }
 
+        #hero .logo {
+            width: 140px;
+            margin-bottom: 20px;
+        }
+
         #hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
@@ -99,12 +104,16 @@
             justify-content: space-around;
             flex-wrap: wrap;
             margin-top: 30px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .feature-card {
             background-color: #fff;
             padding: 20px;
             width: 30%;
+            min-width: 250px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             margin-bottom: 30px;
@@ -178,7 +187,7 @@
                 margin-bottom: 1.5rem;
             }
 
-            #hero .hero-content img {
+            #hero .logo {
                 width: 100px;
             }
 
@@ -233,7 +242,7 @@
                 margin-bottom: 1rem;
             }
 
-            #hero .hero-content img {
+            #hero .logo {
                 width: 80px;
             }
 
@@ -270,7 +279,7 @@
     <header id="hero">
         <div class="overlay"></div>
         <div class="hero-content">
-            <img src="/images/revolution-logo.png" alt="Revolution Logo" style="margin-bottom: 20px;">
+            <img src="/images/revolution-logo.png" alt="Revolution Logo" class="logo">
             <h1>Welcome to Revolution!</h1>
             <p>Your ultimate macro solution for Bee Swarm Simulator</p>
             <a href="https://discord.gg/bm2bcwZWkj" class="cta-btn">Join Our Discord</a>
