@@ -63,7 +63,7 @@
 
         /* Header Styles */
         .header {
- nyt;            position: fixed;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
@@ -154,8 +154,9 @@
             border-radius: var(--radius-md);
             transition: background-color .3s ease-out, transform .3s ease-out;
             display: inline-block;
-            animation: show .25s cubic-bezier(.2, 0, 0, 1);
             cursor: pointer;
+            min-width: 150px;
+            text-align: center;
         }
 
         .cta-btn:hover {
@@ -182,6 +183,10 @@
             border-radius: var(--radius-lg);
             transition: transform .3s ease-out, box-shadow .3s ease-out;
             animation: show .25s cubic-bezier(.2, 0, 0, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 200px;
         }
 
         .download-card:hover {
@@ -197,6 +202,12 @@
         .download-card p {
             font-size: 1rem;
             margin-bottom: calc(var(--spacing) * 4);
+            flex-grow: 1;
+        }
+
+        .download-card .cta-btn {
+            margin-top: auto;
+            align-self: center;
         }
 
         dialog {
@@ -210,6 +221,10 @@
             animation: show .25s cubic-bezier(.2, 0, 0, 1);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
             z-index: 1001;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         dialog::backdrop {
@@ -229,19 +244,45 @@
             color: color-mix(in oklab, var(--color-white) 70%, transparent);
         }
 
+        .dialog-buttons {
+            display: flex;
+            justify-content: center;
+            gap: calc(var(--spacing) * 4);
+        }
+
+        .dialog-btn {
+            padding: calc(var(--spacing) * 4) calc(var(--spacing) * 8);
+            font-size: 1.1rem;
+            border-radius: var(--radius-md);
+            min-width: 150px;
+            cursor: pointer;
+            transition: background-color .3s ease-out, transform .3s ease-out;
+        }
+
+        dialog .cta-btn {
+            background: linear-gradient(#2563eb, #1e40af);
+            box-shadow: 0 4px 6px -1px color-mix(in oklab, var(--color-primary) 10%, transparent);
+            color: var(--color-white);
+            border: none;
+            text-decoration: none;
+        }
+
+        dialog .cta-btn:hover {
+            background: color-mix(in oklab, var(--color-primary) 30%, transparent);
+        }
+
         dialog .close-btn {
             background: none;
             border: 1px solid color-mix(in oklab, var(--color-white) 20%, transparent);
             color: var(--color-white);
-            padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
-            border-radius: var(--radius-md);
-            cursor: pointer;
-            margin-top: calc(var(--spacing) * 4);
-            transition: background-color .3s ease-out;
         }
 
         dialog .close-btn:hover {
             background: color-mix(in oklab, var(--color-white) 10%, transparent);
+        }
+
+        dialog .dialog-btn:active {
+            transform: scale(0.98);
         }
 
         footer {
@@ -363,6 +404,7 @@
 
             dialog {
                 padding: calc(var(--spacing) * 4);
+                max-width: 90%;
             }
 
             dialog h3 {
@@ -373,9 +415,10 @@
                 font-size: 1rem;
             }
 
-            dialog .cta-btn, dialog .close-btn {
+            .dialog-btn {
                 padding: calc(var(--spacing) * 3) calc(var(--spacing) * 6);
                 font-size: 1rem;
+                min-width: 120px;
             }
         }
 
@@ -417,9 +460,10 @@
                 font-size: 0.9rem;
             }
 
-            dialog .cta-btn, dialog .close-btn {
+            .dialog-btn {
                 padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
                 font-size: 0.9rem;
+                min-width: 100px;
             }
 
             footer {
@@ -446,12 +490,12 @@
             <div class="download-card">
                 <h3>Windows</h3>
                 <p>Compatible with Windows 10 and above (.zip file).</p>
-                <button class="cta-btn" onclick="openDialog()">Get on Discord</button>
+                <button class="cta-btn" onclick="openDialog()">Download</button>
             </div>
             <div class="download-card">
                 <h3>MacOS</h3>
                 <p>Compatible with MacOS Ventura and above (.dmg file).</p>
-                <button class="cta-btn" onclick="openDialog()">Get on Discord</button>
+                <button class="cta-btn" onclick="openDialog()">Download</button>
             </div>
         </div>
     </section>
@@ -459,8 +503,10 @@
     <dialog id="download-dialog">
         <h3>Join Our Discord</h3>
         <p>Downloads are only available on our Discord server. Click below to join and get Revolution Macro!</p>
-        <a href="https://discord.gg/bm2bcwZWkj" class="cta-btn">Join Discord</a>
-        <button class="close-btn" onclick="closeDialog()">Close</button>
+        <div class="dialog-buttons">
+            <a href="https://discord.gg/bm2bcwZWkj" class="dialog-btn cta-btn">Join Discord</a>
+            <button class="dialog-btn close-btn" onclick="closeDialog()">Close</button>
+        </div>
     </dialog>
 
     <footer>
