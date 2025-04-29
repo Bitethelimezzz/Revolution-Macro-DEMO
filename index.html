@@ -31,7 +31,7 @@
             --spacing: .25rem;
             --radius-md: .375rem;
             --radius-lg: .5rem;
-            --blur-md: 12px;
+            --blur-md: 8px; /* Reduced for softer blur */
             --font-weight-medium: 500;
             --font-weight-semibold: 600;
             --font-weight-bold: 700;
@@ -50,7 +50,7 @@
         body {
             font-family: var(--font-sans);
             line-height: 1.6;
-            background-color: var(--bg-primary);
+            background: radial-gradient(circle at top, oklch(.15 .05 264.82), var(--bg-primary));
             color: #fff;
             padding: 0;
         }
@@ -68,35 +68,40 @@
             left: 0;
             right: 0;
             background: color-mix(in oklab, var(--color-secondary) 80%, transparent);
-            padding: calc(var(--spacing) * 4) calc(var(--spacing) * 6);
+            padding: calc(var(--spacing) * 5) calc(var(--spacing) * 8); /* Increased padding */
             display: flex;
             align-items: center;
+            justify-content: flex-end; /* Align menu toggle to the right */
             z-index: 1000;
-            transition: background-color .3s ease-out;
+            transition: background-color .3s ease-out, box-shadow .3s ease-out;
         }
 
         .header.header-scrolled {
             -webkit-backdrop-filter: blur(var(--blur-md));
             backdrop-filter: blur(var(--blur-md));
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Added shadow on scroll */
         }
 
         .header .logo {
+            position: absolute;
+            left: calc(var(--spacing) * 8);
+            top: 50%;
+            transform: translateY(-50%);
             width: 60px;
-            margin-right: calc(var(--spacing) * 6);
         }
 
         .header .nav-links {
-            flex: 1;
             display: flex;
             justify-content: center;
-            gap: calc(var(--spacing) * 6);
+            gap: calc(var(--spacing) * 8); /* Increased gap for better spacing */
+            width: 100%;
         }
 
         .header .nav-links a {
             color: var(--color-white);
             text-decoration: none;
             font-size: 1rem;
-            font-weight: var(--font-weight-medium);
+            font-weight: var(--font-weight-semibold); /* Bolder links */
             transition: color 0.2s ease-out;
         }
 
@@ -160,17 +165,19 @@
             font-size: 3.5rem;
             margin-bottom: calc(var(--spacing) * 4);
             animation: show .25s cubic-bezier(.2, 0, 0, 1);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Added for readability */
         }
 
         #hero p {
             font-size: 1.3rem;
             margin-bottom: calc(var(--spacing) * 8);
             color: color-mix(in oklab, var(--color-white) 70%, transparent);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .cta-btn {
             z-index: 0;
-            background: linear-gradient(#2563eb, #1e40af);
+            background: linear-gradient(#3B82F6, #1D4ED8); /* Vibrant gradient */
             position: relative;
             box-shadow: 0 4px 6px -1px color-mix(in oklab, var(--color-primary) 10%, transparent);
             color: var(--color-white);
@@ -179,7 +186,7 @@
             font-size: 1.1rem;
             text-decoration: none;
             border-radius: var(--radius-md);
-            transition: filter var(--default-transition-duration) var(--ease-out), transform var(--default-transition-duration) var(--ease-out);
+            transition: filter var(--default-transition-duration) var(--ease-out), transform var(--default-transition-duration) var(--ease-out), box-shadow 0.3s ease-out;
             display: inline-block;
             animation: show .25s cubic-bezier(.2, 0, 0, 1);
         }
@@ -187,17 +194,20 @@
         .cta-btn:hover {
             filter: brightness(1.2);
             transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); /* Glowing effect */
         }
 
         .section {
-            padding: calc(var(--spacing) * 16) calc(var(--spacing) * 6);
+            padding: calc(var(--spacing) * 20) calc(var(--spacing) * 8); /* Increased padding */
             text-align: center;
             animation: fade .25s ease-out;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)); /* Subtle gradient */
         }
 
         .section h2 {
             font-size: 2.5rem;
             margin-bottom: calc(var(--spacing) * 6);
+            color: var(--color-white); /* Brighter for contrast */
         }
 
         .section p {
@@ -223,6 +233,7 @@
             width: 30%;
             min-width: 250px;
             box-shadow: 0 4px 12px color-mix(in oklab, var(--color-primary) 10%, transparent);
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Added border */
             border-radius: var(--radius-lg);
             margin-bottom: calc(var(--spacing) * 8);
             transition: transform .3s ease-out, box-shadow .3s ease-out;
@@ -254,7 +265,7 @@
             background: var(--color-secondary);
             color: var(--color-white);
             text-align: center;
-            padding: calc(var(--spacing) * 6);
+            padding: calc(var(--spacing) * 8); /* Adjusted padding */
             position: relative;
             z-index: 1;
         }
@@ -278,6 +289,11 @@
             color: var(--color-primary);
             text-decoration: none;
             position: relative;
+            transition: transform 0.2s ease-out;
+        }
+
+        footer a:hover {
+            transform: scale(1.05); /* Subtle hover effect */
         }
 
         footer a::after {
@@ -329,13 +345,13 @@
         /* Mobile-friendly adjustments */
         @media (max-width: 768px) {
             .header {
-                padding: calc(var(--spacing) * 3) calc(var(--spacing) * 4);
-                justify-content: space-between;
+                padding: calc(var(--spacing) * 4) calc(var(--spacing) * 6);
+                justify-content: flex-end;
             }
 
             .header .logo {
+                left: calc(var(--spacing) * 6);
                 width: 50px;
-                margin-right: 0;
             }
 
             .header .nav-links {
@@ -348,8 +364,9 @@
                 background: color-mix(in oklab, var(--color-secondary) 95%, transparent);
                 padding: calc(var(--spacing) * 6);
                 text-align: center;
-                -webkit-backdrop-filter: blur(5px);
-                backdrop-filter: blur(5px);
+                -webkit-backdrop-filter: blur(var(--blur-md));
+                backdrop-filter: blur(var(--blur-md));
+                width: auto;
             }
 
             .header .nav-links.active {
@@ -383,7 +400,7 @@
             }
 
             .section {
-                padding: calc(var(--spacing) * 10) calc(var(--spacing) * 4);
+                padding: calc(var(--spacing) * 12) calc(var(--spacing) * 4);
             }
 
             .section h2 {
@@ -421,6 +438,7 @@
         @media (max-width: 480px) {
             .header .logo {
                 width: 40px;
+                left: calc(var(--spacing) * 4);
             }
 
             .header .nav-links {
@@ -467,7 +485,7 @@
             }
 
             footer {
-                padding: calc(var(--spacing) * 4);
+                padding: calc(var(--spacing) * 6);
                 font-size: 0.9rem;
             }
         }
@@ -536,6 +554,7 @@
 
     <section class="section" id="author">
         <h2>About the Author</h2>
+        jayden is a cool dude who made this site for fun
         <p>Revolution is a solo project created by Liam, a passionate developer with over 10 years of programming experience and 3 years in full-stack development. Frustrated with existing macro solutions and the toxic culture of gatekeeping in the Bee Swarm Simulator community, Liam started Revolution as a passion project in July 2023. Revolution was designed to be accessible, free, and built with care from a trusted developer.</p>
     </section>
 
