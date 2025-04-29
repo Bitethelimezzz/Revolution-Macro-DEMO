@@ -67,11 +67,17 @@
             top: 0;
             left: 0;
             right: 0;
-            background: #1A2526; /* Atlas OS header background */
+            background: color-mix(in oklab, var(--color-secondary) 80%, transparent);
             padding: calc(var(--spacing) * 4) calc(var(--spacing) * 6);
             display: flex;
             align-items: center;
             z-index: 1000;
+            transition: background-color .3s ease-out;
+        }
+
+        .header.header-scrolled {
+            -webkit-backdrop-filter: blur(var(--blur-md));
+            backdrop-filter: blur(var(--blur-md));
         }
 
         .header .logo {
@@ -116,7 +122,7 @@
             align-items: center;
             flex-direction: column;
             position: relative;
-            margin-top: 0; /* Fixed to remove gap */
+            margin-top: 0;
             animation: fade .25s ease-out;
         }
 
@@ -339,9 +345,11 @@
                 top: 60px;
                 left: 0;
                 right: 0;
-                background: #1A2526;
+                background: color-mix(in oklab, var(--color-secondary) 95%, transparent);
                 padding: calc(var(--spacing) * 6);
                 text-align: center;
+                -webkit-backdrop-filter: blur(5px);
+                backdrop-filter: blur(5px);
             }
 
             .header .nav-links.active {
