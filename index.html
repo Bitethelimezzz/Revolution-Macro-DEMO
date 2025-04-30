@@ -31,7 +31,7 @@
             --spacing: .25rem;
             --radius-md: .375rem;
             --radius-lg: .5rem;
-            --blur-md: 8px; /* Reduced for softer blur */
+            --blur-md: 8px;
             --font-weight-medium: 500;
             --font-weight-semibold: 600;
             --font-weight-bold: 700;
@@ -68,10 +68,10 @@
             left: 0;
             right: 0;
             background: color-mix(in oklab, var(--color-secondary) 80%, transparent);
-            padding: calc(var(--spacing) * 5) calc(var(--spacing) * 8); /* Increased padding */
+            padding: calc(var(--spacing) * 5) calc(var(--spacing) * 8);
             display: flex;
             align-items: center;
-            justify-content: flex-end; /* Align menu toggle to the right */
+            justify-content: flex-end;
             z-index: 1000;
             transition: background-color .3s ease-out, box-shadow .3s ease-out;
         }
@@ -79,7 +79,7 @@
         .header.header-scrolled {
             -webkit-backdrop-filter: blur(var(--blur-md));
             backdrop-filter: blur(var(--blur-md));
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Added shadow on scroll */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .header .logo {
@@ -93,7 +93,7 @@
         .header .nav-links {
             display: flex;
             justify-content: center;
-            gap: calc(var(--spacing) * 8); /* Increased gap for better spacing */
+            gap: calc(var(--spacing) * 8);
             width: 100%;
         }
 
@@ -101,7 +101,7 @@
             color: var(--color-white);
             text-decoration: none;
             font-size: 1rem;
-            font-weight: var(--font-weight-semibold); /* Bolder links */
+            font-weight: var(--font-weight-semibold);
             transition: color 0.2s ease-out;
         }
 
@@ -165,7 +165,7 @@
             font-size: 3.5rem;
             margin-bottom: calc(var(--spacing) * 4);
             animation: show .25s cubic-bezier(.2, 0, 0, 1);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Added for readability */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         #hero p {
@@ -177,7 +177,7 @@
 
         .cta-btn {
             z-index: 0;
-            background: linear-gradient(#3B82F6, #1D4ED8); /* Vibrant gradient */
+            background: linear-gradient(#3B82F6, #1D4ED8);
             position: relative;
             box-shadow: 0 4px 6px -1px color-mix(in oklab, var(--color-primary) 10%, transparent);
             color: var(--color-white);
@@ -194,20 +194,20 @@
         .cta-btn:hover {
             filter: brightness(1.2);
             transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); /* Glowing effect */
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
         }
 
         .section {
-            padding: calc(var(--spacing) * 20) calc(var(--spacing) * 8); /* Increased padding */
+            padding: calc(var(--spacing) * 20) calc(var(--spacing) * 8);
             text-align: center;
             animation: fade .25s ease-out;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)); /* Subtle gradient */
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
         }
 
         .section h2 {
             font-size: 2.5rem;
             margin-bottom: calc(var(--spacing) * 6);
-            color: var(--color-white); /* Brighter for contrast */
+            color: var(--color-white);
         }
 
         .section p {
@@ -233,7 +233,7 @@
             width: 30%;
             min-width: 250px;
             box-shadow: 0 4px 12px color-mix(in oklab, var(--color-primary) 10%, transparent);
-            border: 1px solid rgba(255, 255, 255, 0.1); /* Added border */
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: var(--radius-lg);
             margin-bottom: calc(var(--spacing) * 8);
             transition: transform .3s ease-out, box-shadow .3s ease-out;
@@ -261,11 +261,67 @@
             vertical-align: middle;
         }
 
+        /* Alert Styles */
+        .alert {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .alert-content {
+            background: color-mix(in oklab, var(--color-secondary) 95%, transparent);
+            padding: calc(var(--spacing) * 8);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .alert-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: calc(var(--spacing) * 4);
+        }
+
+        .alert-content p {
+            font-size: 1rem;
+            margin-bottom: calc(var(--spacing) * 6);
+            color: color-mix(in oklab, var(--color-white) 80%, transparent);
+        }
+
+        .alert-buttons {
+            display: flex;
+            justify-content: center;
+            gap: calc(var(--spacing) * 4);
+            flex-wrap: wrap;
+        }
+
+        .alert-btn {
+            padding: calc(var(--spacing) * 3) calc(var(--spacing) * 6);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s ease-out, background 0.3s ease-out;
+        }
+
+        .alert-btn.close {
+            background: color-mix(in oklab, var(--color-white) 20%, transparent);
+            color: var(--color-white);
+        }
+
         footer {
             background: var(--color-secondary);
             color: var(--color-white);
             text-align: center;
-            padding: calc(var(--spacing) * 8); /* Adjusted padding */
+            padding: calc(var(--spacing) * 8);
             position: relative;
             z-index: 1;
         }
@@ -293,7 +349,7 @@
         }
 
         footer a:hover {
-            transform: scale(1.05); /* Subtle hover effect */
+            transform: scale(1.05);
         }
 
         footer a::after {
@@ -433,6 +489,23 @@
             .feature-card img {
                 width: 50px;
             }
+
+            .alert-content {
+                padding: calc(var(--spacing) * 6);
+            }
+
+            .alert-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .alert-content p {
+                font-size: 0.95rem;
+            }
+
+            .alert-btn {
+                padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+                font-size: 0.9rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -482,6 +555,23 @@
 
             .feature-card p {
                 font-size: 0.85rem;
+            }
+
+            .alert-content {
+                padding: calc(var(--spacing) * 4);
+            }
+
+            .alert-content h3 {
+                font-size: 1.3rem;
+            }
+
+            .alert-content p {
+                font-size: 0.9rem;
+            }
+
+            .alert-buttons {
+                flex-direction: column;
+                gap: calc(var(--spacing) * 2);
             }
 
             footer {
@@ -557,17 +647,119 @@
         <p>Revolution is a solo project created by Liam, a passionate developer with over 10 years of programming experience and 3 years in full-stack development. Frustrated with existing macro solutions and the toxic culture of gatekeeping in the Bee Swarm Simulator community, Liam started Revolution as a passion project in July 2023. Revolution was designed to be accessible, free, and built with care from a trusted developer.</p>
     </section>
 
+    <div class="alert" id="alertPopup">
+        <div class="alert-content" id="alertContent">
+            <h3 id="alertHeader"></h3>
+            <p id="alertText"></p>
+            <div class="alert-buttons" id="alertButtons">
+                <!-- Buttons will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>© 2025 Revolution Macro | All rights reserved</p>
         <p><a href="https://discord.gg/bm2bcwZWkj">Join Our Discord</a></p>
     </footer>
 
     <script>
+        // Alert Configuration (Edit these variables to change the alert)
+        const alertConfig = {
+            // -- INFO CONFIGURE --
+            alertEnabled: true, // Enable or disable the alert (true or false)
+            alertColour: 'Green', // Options: Red, Blue, Green, Purple, Pink, Yellow, Orange, Grey
+
+            // -- TEXT --
+            alertHeaderText: 'ALERRT!!!', // The header text for the alert
+            alertText: 'This is a test alert do not be alerted! Join our discord too!', // The body text for the alert
+
+            // -- BUTTONS --
+            button1: {
+                enabled: true, // Enable or disable Button 1 (true or false)
+                text: 'Close', // Text for Button 1
+                function: '[closesite]' // Options: '[closesite]' or a URL (e.g., 'https://example.com')
+            },
+            button2: {
+                enabled: true, // Enable or disable Button 2 (true or false)
+                text: 'Discord', // Text for Button 2
+                function: 'https://discord.com/invite/bm2bcwZWkj' // Options: '[closesite]' or a URL
+            }
+        };
+
+        // Color mapping for alertColour
+        const colorMap = {
+            'Red': { border: '#FF3B30', header: '#FF3B30', button: ['#FF3B30', '#D32F2F'] },
+            'Blue': { border: '#2196F3', header: '#2196F3', button: ['#2196F3', '#1976D2'] },
+            'Green': { border: '#34C759', header: '#34C759', button: ['#34C759', '#28A745'] },
+            'Purple': { border: '#AB47BC', header: '#AB47BC', button: ['#AB47BC', '#8E24AA'] },
+            'Pink': { border: '#F06292', header: '#F06292', button: ['#F06292', '#EC407A'] },
+            'Yellow': { border: '#FFCA28', header: '#FFCA28', button: ['#FFCA28', '#FFB300'] },
+            'Orange': { border: '#FF9800', header: '#FF9800', button: ['#FF9800', '#F57C00'] },
+            'Grey': { border: '#B0BEC5', header: '#B0BEC5', button: ['#B0BEC5', '#90A4AE'] }
+        };
+
+        // Apply alert styles dynamically
+        function applyAlertStyles() {
+            const selectedColor = colorMap[alertConfig.alertColour] || colorMap['Green']; // Default to Green if invalid
+            const alertContent = document.getElementById('alertContent');
+            alertContent.style.border = `2px solid ${selectedColor.border}`;
+            const alertHeader = document.getElementById('alertHeader');
+            alertHeader.style.color = selectedColor.header;
+
+            // Apply button styles
+            const actionButton = document.querySelector('.alert-btn.action');
+            if (actionButton) {
+                actionButton.style.background = `linear-gradient(${selectedColor.button[0]}, ${selectedColor.button[1]})`;
+            }
+        }
+
+        // Populate alert content
+        function populateAlert() {
+            // Set header and text
+            document.getElementById('alertHeader').textContent = alertConfig.alertHeaderText;
+            document.getElementById('alertText').textContent = alertConfig.alertText;
+
+            // Add buttons dynamically
+            const buttonsContainer = document.getElementById('alertButtons');
+
+            // Button 1
+            if (alertConfig.button1.enabled) {
+                const btn1 = document.createElement('button');
+                btn1.className = 'alert-btn close';
+                btn1.textContent = alertConfig.button1.text;
+                btn1.onclick = () => {
+                    if (alertConfig.button1.function === '[closesite]') {
+                        closeAlert();
+                    } else {
+                        window.open(alertConfig.button1.function, '_blank');
+                    }
+                };
+                buttonsContainer.appendChild(btn1);
+            }
+
+            // Button 2
+            if (alertConfig.button2.enabled) {
+                const btn2 = document.createElement('button');
+                btn2.className = 'alert-btn action'; // Use 'action' class for the colored button
+                btn2.textContent = alertConfig.button2.text;
+                btn2.onclick = () => {
+                    if (alertConfig.button2.function === '[closesite]') {
+                        closeAlert();
+                    } else {
+                        window.open(alertConfig.button2.function, '_blank');
+                    }
+                };
+                buttonsContainer.appendChild(btn2);
+            }
+        }
+
+        // Toggle menu
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('active');
         }
 
+        // Header scroll effect
         window.addEventListener('scroll', () => {
             const header = document.querySelector('.header');
             if (window.scrollY > 50) {
@@ -576,6 +768,19 @@
                 header.classList.remove('header-scrolled');
             }
         });
+
+        // Alert System
+        window.addEventListener('load', () => {
+            if (alertConfig.alertEnabled) {
+                populateAlert();
+                applyAlertStyles();
+                document.getElementById('alertPopup').style.display = 'flex';
+            }
+        });
+
+        function closeAlert() {
+            document.getElementById('alertPopup').style.display = 'none';
+        }
     </script>
 </body>
 </html>
