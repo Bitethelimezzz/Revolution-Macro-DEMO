@@ -201,7 +201,19 @@
             padding: calc(var(--spacing) * 20) calc(var(--spacing) * 8);
             text-align: center;
             animation: fade .25s ease-out;
+        }
+
+        /* Alternating gradients */
+        #about, #safety {
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+        }
+
+        #safety {
+            background: linear-gradient(180deg, color-mix(in oklab, var(--color-primary) 5%, transparent), rgba(255, 255, 255, 0));
+        }
+
+        #features, #author {
+            background: var(--bg-primary);
         }
 
         .section h2 {
@@ -314,6 +326,10 @@
 
         .alert-btn.close {
             background: color-mix(in oklab, var(--color-white) 20%, transparent);
+            color: var(--color-white);
+        }
+
+        .alert-btn.action {
             color: var(--color-white);
         }
 
@@ -667,11 +683,11 @@
         const alertConfig = {
             // -- INFO CONFIGURE --
             alertEnabled: true, // Enable or disable the alert (true or false)
-            alertColour: 'Yellow', // Options: Red, Blue, Green, Purple, Pink, Yellow, Orange, Grey
+            alertColour: 'Green', // Options: Red, Blue, Green, Purple, Pink, Yellow, Orange, Grey
 
             // -- TEXT --
-            alertHeaderText: 'Notice', // The header text for the alert
-            alertText: 'This alert system is used to alert users and is easy to configure. This can be customized and disable or enabled. Read more on the github readme file!', // The body text for the alert
+            alertHeaderText: 'ALERT!', // The header text for the alert
+            alertText: 'Change this to your likin!', // The body text for the alert
 
             // -- BUTTONS --
             button1: {
@@ -681,8 +697,8 @@
             },
             button2: {
                 enabled: true, // Enable or disable Button 2 (true or false)
-                text: 'Github', // Text for Button 2
-                function: 'https://github.com/Bitethelimezzz/Revolution-Macro-DEMO' // Options: '[closesite]' or a URL
+                text: 'Discord', // Text for Button 2
+                function: 'https://discord.com/invite/bm2bcwZWkj' // Options: '[closesite]' or a URL
             }
         };
 
@@ -700,13 +716,12 @@
 
         // Apply alert styles dynamically
         function applyAlertStyles() {
-            const selectedColor = colorMap[alertConfig.alertColour] || colorMap['Green']; // Default to Green if invalid
+            const selectedColor = colorMap[alertConfig.alertColour] || colorMap['Green'];
             const alertContent = document.getElementById('alertContent');
             alertContent.style.border = `2px solid ${selectedColor.border}`;
             const alertHeader = document.getElementById('alertHeader');
             alertHeader.style.color = selectedColor.header;
 
-            // Apply button styles
             const actionButton = document.querySelector('.alert-btn.action');
             if (actionButton) {
                 actionButton.style.background = `linear-gradient(${selectedColor.button[0]}, ${selectedColor.button[1]})`;
@@ -715,14 +730,11 @@
 
         // Populate alert content
         function populateAlert() {
-            // Set header and text
             document.getElementById('alertHeader').textContent = alertConfig.alertHeaderText;
             document.getElementById('alertText').textContent = alertConfig.alertText;
 
-            // Add buttons dynamically
             const buttonsContainer = document.getElementById('alertButtons');
 
-            // Button 1
             if (alertConfig.button1.enabled) {
                 const btn1 = document.createElement('button');
                 btn1.className = 'alert-btn close';
@@ -737,10 +749,9 @@
                 buttonsContainer.appendChild(btn1);
             }
 
-            // Button 2
             if (alertConfig.button2.enabled) {
                 const btn2 = document.createElement('button');
-                btn2.className = 'alert-btn action'; // Use 'action' class for the colored button
+                btn2.className = 'alert-btn action';
                 btn2.textContent = alertConfig.button2.text;
                 btn2.onclick = () => {
                     if (alertConfig.button2.function === '[closesite]') {
